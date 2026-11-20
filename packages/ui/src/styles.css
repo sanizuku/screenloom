@@ -1,0 +1,220 @@
+/* ScreenLoom UI styles. Import after @screenloom/tokens/tokens.css. */
+
+.sl-field,
+.sl-radio-group {
+  display: grid;
+  gap: var(--sl-space-1);
+  min-width: 0;
+  font-family: var(--sl-font-sans);
+  color: var(--sl-color-text);
+}
+
+.sl-radio-group {
+  border: 0;
+  margin: 0;
+  padding: 0;
+}
+
+.sl-field__label {
+  font-size: var(--sl-font-size-sm);
+  font-weight: 600;
+  padding: 0;
+}
+
+.sl-field__required {
+  color: var(--sl-color-danger);
+  margin-left: 2px;
+}
+
+.sl-field__hint,
+.sl-field__error {
+  margin: 0;
+  font-size: var(--sl-font-size-sm);
+}
+
+.sl-field__hint {
+  color: var(--sl-color-text-muted);
+}
+
+.sl-field__error {
+  color: var(--sl-color-danger);
+}
+
+/* Text-like controls */
+.sl-control {
+  width: 100%;
+  min-height: var(--sl-control-height);
+  padding: var(--sl-space-2) var(--sl-space-3);
+  font: inherit;
+  font-size: var(--sl-font-size-md);
+  font-family: var(--sl-font-sans);
+  color: var(--sl-color-text);
+  background: var(--sl-color-surface);
+  border: 1px solid var(--sl-color-border);
+  border-radius: var(--sl-radius-md);
+  transition: border-color 120ms, box-shadow 120ms;
+}
+
+.sl-control:hover:not(:disabled) {
+  border-color: var(--sl-color-border-strong);
+}
+
+.sl-control:focus-visible {
+  outline: none;
+  border-color: var(--sl-color-focus);
+  box-shadow: var(--sl-shadow-focus);
+}
+
+.sl-control[aria-invalid="true"] {
+  border-color: var(--sl-color-danger);
+}
+
+.sl-control:disabled {
+  background: var(--sl-color-surface-muted);
+  color: var(--sl-color-text-muted);
+  cursor: not-allowed;
+}
+
+.sl-control[readonly] {
+  background: var(--sl-color-surface-muted);
+}
+
+.sl-textarea {
+  resize: vertical;
+  line-height: 1.5;
+}
+
+.sl-select {
+  cursor: pointer;
+}
+
+/* Checkbox and radio */
+.sl-check {
+  display: flex;
+  align-items: center;
+  gap: var(--sl-space-2);
+  font-family: var(--sl-font-sans);
+  font-size: var(--sl-font-size-md);
+  color: var(--sl-color-text);
+}
+
+.sl-check__input {
+  width: 1rem;
+  height: 1rem;
+  margin: 0;
+  accent-color: var(--sl-color-primary);
+  cursor: pointer;
+}
+
+.sl-check__input:focus-visible {
+  outline: 2px solid var(--sl-color-focus);
+  outline-offset: 2px;
+}
+
+.sl-check__input:disabled + .sl-check__label {
+  color: var(--sl-color-text-muted);
+}
+
+.sl-radio-group__options {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sl-space-2);
+}
+
+.sl-radio-group--row .sl-radio-group__options {
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: var(--sl-space-4);
+}
+
+/* Button */
+.sl-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--sl-space-2);
+  min-height: var(--sl-control-height);
+  padding: 0 var(--sl-space-4);
+  font: inherit;
+  font-family: var(--sl-font-sans);
+  font-size: var(--sl-font-size-md);
+  font-weight: 600;
+  border: 1px solid transparent;
+  border-radius: var(--sl-radius-md);
+  cursor: pointer;
+  transition: background 120ms, border-color 120ms;
+}
+
+.sl-button--sm {
+  min-height: 1.875rem;
+  padding: 0 var(--sl-space-3);
+  font-size: var(--sl-font-size-sm);
+}
+
+.sl-button:focus-visible {
+  outline: none;
+  box-shadow: var(--sl-shadow-focus);
+}
+
+.sl-button:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+}
+
+.sl-button--primary {
+  background: var(--sl-color-primary);
+  color: var(--sl-color-on-primary);
+}
+
+.sl-button--primary:hover:not(:disabled) {
+  background: var(--sl-color-primary-hover);
+}
+
+.sl-button--secondary {
+  background: var(--sl-color-surface);
+  color: var(--sl-color-text);
+  border-color: var(--sl-color-border);
+}
+
+.sl-button--secondary:hover:not(:disabled) {
+  border-color: var(--sl-color-border-strong);
+}
+
+.sl-button--ghost {
+  background: transparent;
+  color: var(--sl-color-primary);
+}
+
+.sl-button--ghost:hover:not(:disabled) {
+  background: var(--sl-color-surface-muted);
+}
+
+.sl-button--danger {
+  background: var(--sl-color-danger);
+  color: #fff;
+}
+
+.sl-spinner {
+  width: 0.9em;
+  height: 0.9em;
+  border: 2px solid currentColor;
+  border-right-color: transparent;
+  border-radius: 50%;
+  animation: sl-spin 700ms linear infinite;
+}
+
+@keyframes sl-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .sl-spinner {
+    animation-duration: 2s;
+  }
+  .sl-control,
+  .sl-button {
+    transition: none;
+  }
+}

@@ -1,0 +1,53 @@
+import { Meta } from "@storybook/blocks";
+
+<Meta title="Introduction" />
+
+# ScreenLoom
+
+React forms aur CRUD screens JSON se banane ki library.
+
+Abhi (v0.1) isme do packages hain:
+
+| Package | Kya hai |
+| --- | --- |
+| `@screenloom/tokens` | Colors, spacing, radius, fonts. Light aur dark CSS variables |
+| `@screenloom/ui` | Button, Input, Textarea, Select, Checkbox, RadioGroup, Field |
+
+## Install
+
+```bash
+npm i @screenloom/ui @screenloom/tokens
+```
+
+```tsx
+import "@screenloom/tokens/tokens.css";
+import "@screenloom/ui/styles.css";
+import { Field, Input, Button } from "@screenloom/ui";
+
+export function Example() {
+  return (
+    <form>
+      <Field label="Name" required>
+        <Input name="name" />
+      </Field>
+      <Button type="submit">Save</Button>
+    </form>
+  );
+}
+```
+
+## Theme badalna
+
+Koi bhi `--sl-color-*` variable override karo, ya `themeStyle()` use karo:
+
+```tsx
+import { themeStyle } from "@screenloom/tokens";
+
+<div style={themeStyle({ primary: "#0b6668" })}>...</div>
+```
+
+Dark mode OS setting se apne aap aata hai. Zabardasti ke liye `<html data-theme="dark">`.
+
+## Aage kya aayega
+
+`form-engine` (JSON schema se form), `form-designer` (drag-drop), Theme Builder, `crud` (poori screen config se).

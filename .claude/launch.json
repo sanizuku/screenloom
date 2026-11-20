@@ -1,0 +1,11 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "storybook",
+      "runtimeExecutable": "apps/docs/node_modules/.bin/storybook",
+      "runtimeArgs": ["dev", "-p", "6006", "--no-open", "--ci", "-c", "apps/docs/.storybook"],
+      "port": 6006
+    }
+  ]
+}

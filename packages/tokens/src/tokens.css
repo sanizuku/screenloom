@@ -1,0 +1,74 @@
+/*
+ * ScreenLoom design tokens.
+ * Light values on :root. Dark values apply with the OS setting (unless data-theme="light")
+ * or when data-theme="dark" is set on <html>. Override any variable to theme your app.
+ */
+:root {
+  --sl-color-bg: #f6f7f9;
+  --sl-color-surface: #ffffff;
+  --sl-color-surface-muted: #eef1f4;
+  --sl-color-text: #17202a;
+  --sl-color-text-muted: #5b6774;
+  --sl-color-border: #cfd6dd;
+  --sl-color-border-strong: #9aa6b2;
+  --sl-color-primary: #2456c7;
+  --sl-color-primary-hover: #1c46a6;
+  --sl-color-on-primary: #ffffff;
+  --sl-color-danger: #c0362c;
+  --sl-color-success: #1f7a4a;
+  --sl-color-focus: #2456c7;
+
+  --sl-font-sans: "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --sl-font-mono: ui-monospace, "SFMono-Regular", Menlo, monospace;
+  --sl-font-size-sm: 0.8125rem;
+  --sl-font-size-md: 0.875rem;
+  --sl-font-size-lg: 1rem;
+
+  --sl-space-1: 0.25rem;
+  --sl-space-2: 0.5rem;
+  --sl-space-3: 0.75rem;
+  --sl-space-4: 1rem;
+  --sl-space-6: 1.5rem;
+
+  --sl-radius-sm: 4px;
+  --sl-radius-md: 6px;
+
+  --sl-control-height: 2.25rem;
+  --sl-shadow-focus: 0 0 0 3px color-mix(in srgb, var(--sl-color-focus) 30%, transparent);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --sl-color-bg: #11161c;
+    --sl-color-surface: #1a2129;
+    --sl-color-surface-muted: #232c36;
+    --sl-color-text: #e7ecf1;
+    --sl-color-text-muted: #9eabb8;
+    --sl-color-border: #34404c;
+    --sl-color-border-strong: #56636f;
+    --sl-color-primary: #6f9bff;
+    --sl-color-primary-hover: #8eb0ff;
+    --sl-color-on-primary: #0b1730;
+    --sl-color-danger: #f0857c;
+    --sl-color-success: #62c98f;
+    --sl-color-focus: #6f9bff;
+    color-scheme: dark;
+  }
+}
+
+:root[data-theme="dark"] {
+  --sl-color-bg: #11161c;
+  --sl-color-surface: #1a2129;
+  --sl-color-surface-muted: #232c36;
+  --sl-color-text: #e7ecf1;
+  --sl-color-text-muted: #9eabb8;
+  --sl-color-border: #34404c;
+  --sl-color-border-strong: #56636f;
+  --sl-color-primary: #6f9bff;
+  --sl-color-primary-hover: #8eb0ff;
+  --sl-color-on-primary: #0b1730;
+  --sl-color-danger: #f0857c;
+  --sl-color-success: #62c98f;
+  --sl-color-focus: #6f9bff;
+  color-scheme: dark;
+}
