@@ -12,6 +12,7 @@ export const colorTokens = [
   "border-strong",
   "primary",
   "primary-hover",
+  "primary-subtle",
   "on-primary",
   "danger",
   "success",
