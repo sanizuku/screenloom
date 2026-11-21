@@ -21,7 +21,7 @@ User ye project **seekhne ke liye khud bana raha hai**, VS Code mein, step by st
 - Har naye concept par ek line ka **interview angle** do ("Interview mein poochha jaye to bolo: ...").
 - Error aaye to pehle user se samjhne ko kaho ki error kya keh raha hai, phir hint do, phir solution.
 - Bhasha: Hinglish (Roman Hindi + English technical words), simple sentences.
-- Git commands (commit, push, branch, PR) bhi user khud chalayega. Command batao, chalao mat.
+- Git ab `git-guide` agent chalata hai (user ne 2026-11-21 ko poori tarah de diya): har feature ki alag branch, commits, push, PR, merge into `develop`. Release (`main`, npm publish) sirf user ki haan se.
 
 ## Tech stack
 
@@ -75,31 +75,39 @@ pnpm changeset      # package ka behaviour badla ho to
 4. **v0.4**: Theme Builder (ek brand color se palette, live preview, JSON/CSS export) + `crud` screen builder
    (schema + grid columns + data adapter se poori CRUD screen)
 5. **v0.5**: AI schema generator (table columns ya requirement se draft schema, developer review kare)
+6. **v0.6 (publish ke baad)**: ScreenLoom se ek real app: **exam prep app** (IBPS SO IT jaisa exam, personal use).
+   - Content: subject-wise notes, PYQ (previous year questions) bank, mock tests, timer, score analytics, weak topics, revision list
+   - Web tech seekhne ke liye: Web Worker (search index, test scoring), Service Worker + PWA (offline padhai),
+     IndexedDB (questions aur progress local), virtualized list (hazaron questions), DataGrid/CRUD (question bank admin),
+     form-engine (question add/edit form), DatePicker (study plan)
+   - PYQ/content copyrighted ho sakta hai: app aur content private rakho (alag private repo), public mein sirf code ya sample data
 
 Library ko famous banane ke liye: live playground, README mein GIF, 2-minute quick start, comparison page
 (react-jsonschema-form, Formik, Form.io), launch posts (r/reactjs, dev.to, Product Hunt).
 
 ## Agents aur pipeline
 
-Agents `.claude/agents/` mein hain. Har naya control is order mein banta hai:
+Agents `.claude/agents/` mein hain. **Agents ek-ek karke chalte hain, kabhi parallel nahi** (ek hi files par takraav na ho, aur usage limit na lage).
+Har control ke liye order:
 
-| Step | Agent | Kya karta hai | Output |
-|------|-------|---------------|--------|
-| 1. Kya banana hai | `product-ideas` | Control/feature chunna, priority | Faisla (user ka) |
-| 2. Branch | `git-guide` | `develop` se `feature/<naam>` ki commands batata hai | User branch banata hai |
-| 3. Design | `ui-designer` | Anatomy, states, variants, customisation API, a11y, keyboard | `docs/specs/<control>.md` |
-| 4a. Seekh ke likhna (default) | `mentor` | Step by step sikhata hai, user khud likhta hai | User ka code |
-| 4b. Automate (sirf jab user bole "tum bana do") | `component-builder` | Control + test + story + export, phir walkthrough + "ab tum karo" task | Code + handover |
-| 5. Manual test | user | Storybook/playground mein khud chala ke dekhna | Bugs list |
-| 6. Review | `component-reviewer` | Conventions, a11y, tests, typecheck | Findings (fix user karta hai) |
-| 7. PR | `git-guide` | Commit, push, PR `feature/* -> develop` ki commands | PR |
-| 8. Record | `mentor` | Work log + interview prep update, quiz | `notes/learning/*.md` |
+| Step | Agent | Kaam | Output |
+|------|-------|------|--------|
+| 0. Kya banana hai | `product-ideas` | Control/feature chunna, priority | Faisla (user ka) |
+| 0. Branch | `git-guide` | Latest `develop` se `feature/<naam>` khud banata hai | Nayi branch |
+| 1. Design + animation | `ui-designer` | Spec (anatomy = markup contract) + poora visual layer: CSS, tokens, animations, glass, dark, reduced-motion | `docs/specs/<control>.md`, `styles.css` section, tokens |
+| 2. Functionality | `component-builder` | React/TS logic, ARIA, keyboard, form, exports, story, playground entry (CSS aur tests nahi) | `<Control>.tsx` + story + registry |
+| 3. Test | `component-tester` | Unit + interaction tests, browser mein UI test (screenshots), bugs list | `<Control>.test.tsx` + bug report |
+| 3b. Fix | `ui-designer` / `component-builder` | Tester ke bugs (look ho to designer, behaviour ho to builder) | Fixes |
+| 4. Review | `component-reviewer` | Conventions, design language, a11y, typecheck | Findings |
+| 5. Manual test | user | Playground mein khud chala ke feedback | Feedback notes |
+| 6. PR | `git-guide` | Har step ke baad commit + push; feature poora hone par PR, CI, squash merge into `develop` | Merged PR |
+| 7. Record | `mentor` | Work log + interview prep, quiz | `notes/learning/*.md` |
+| Showcase | `creative-director` | Playground, Storybook, docs, landing ka unique look (loom/thread signature) | Showcase surfaces |
 
 Rules:
-- Default 4a hai (teaching mode). 4b tabhi jab user saaf bole.
+- Default teaching mode hai (user khud likhta hai, `mentor` sikhata hai). Agents se banwana tabhi jab user bole "tum bana do" / "poora bana do".
+- Design language: `docs/specs/design-language.md` (glass floating layers, motion tokens, signature, anti-generic bar). Saare agents follow karte hain.
 - Har kaam ke baad `mentor` work log mein "Maine khud kiya" aur "Agent ne kiya" alag likhta hai, taaki interview mein sirf sach bola jaye.
-- Planned (abhi nahi bana): `ui-tester` agent jo browser se Storybook stories kholke UI test karega
-  aur interaction/visual tests likhega. Ye step 5 ke baad aur step 6 se pehle aayega.
 
 ## Abhi kahan hain (progress)
 

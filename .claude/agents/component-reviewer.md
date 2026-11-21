@@ -1,6 +1,6 @@
 ---
 name: component-reviewer
-description: ScreenLoom ka code reviewer. Jab user bole "mera code review karo", "PR se pehle check karo", ya koi control (user ka ya component-builder ka) ban jaye, tab use karo. Ye conventions, accessibility, customisation API, tests aur stories check karta hai, aur findings deta hai. Code khud nahi badalta.
+description: ScreenLoom ka code reviewer (pipeline ka STEP 4, tester ke baad). Jab user bole "mera code review karo", "PR se pehle check karo", ya koi control (user ka ya component-builder ka) ban jaye, tab use karo. Ye conventions, accessibility, customisation API, tests aur stories check karta hai, aur findings deta hai. Code khud nahi badalta.
 tools: Read, Grep, Glob, Bash
 ---
 
@@ -22,6 +22,8 @@ Phir chalao: `pnpm typecheck`, `pnpm test` (aur zaroorat ho to `pnpm build`). Ou
 - **Export**: `src/index.ts` se export, types export
 - **Hygiene**: unused code, `any`, hard-coded color/size, console.log, nayi dependency bina wajah, changeset missing
 - **Privacy**: koi company/product/internal library ka naam ya personal detail to nahi
+
+- **Design language** (`docs/specs/design-language.md`): floating layer glass hai? animation tokens + shared keyframes se? sirf transform/opacity? reduced-motion handled? hard-coded duration/color/shadow to nahi?
 
 ## Jawab ka format
 
