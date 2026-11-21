@@ -1,7 +1,7 @@
 {
   "name": "@screenloom/ui",
   "version": "0.1.0",
-  "description": "ScreenLoom React controls: Button, Input, Textarea, Select, Checkbox, RadioGroup, Field",
+  "description": "ScreenLoom React controls: Button, Input, Textarea, Select, Checkbox, RadioGroup, DatePicker, Field",
   "license": "MIT",
   "type": "module",
   "sideEffects": ["*.css"],

@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from "@storybook/react";
-import { Checkbox, Field, Input, RadioGroup, Select, Textarea } from "@screenloom/ui";
+import { Checkbox, DatePicker, Field, Input, RadioGroup, Select, Textarea } from "@screenloom/ui";
 
 const meta = {
   title: "Controls/Field controls",
@@ -115,7 +115,7 @@ export const SampleForm: Story = {
         <Select placeholder="Choose" options={[{ value: "a", label: "Team A" }, { value: "b", label: "Team B" }]} />
       </Field>
       <Field label="Joining date">
-        <Input type="date" />
+        <DatePicker name="joiningDate" />
       </Field>
       <div style={{ gridColumn: "1 / -1" }}>
         <Field label="Address">
